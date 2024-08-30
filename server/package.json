@@ -1,0 +1,13 @@
+{
+  "name": "@serene-haven/server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm docker:start || pnpm docker:run",
+    "docker:build": "docker build -t serene-haven-pb .",
+    "docker:run": "docker run --name serene-haven-pb -d -p 8090:8090 -v ./pb/pb_data:/pb/pb_data -v ./pb/pb_hooks:/pb/pb_hooks -v ./pb/pb_migrations:/pb/pb_migrations serene-haven-pb",
+    "docker:start": "docker start serene-haven-pb",
+    "docker:stop": "docker stop serene-haven-pb",
+    "docker:rm": "docker rm serene-haven-pb"
+  }
+}

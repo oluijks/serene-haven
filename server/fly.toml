@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for serene-haven on 2024-08-30T21:22:17+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'serene-haven'
+primary_region = 'ams'
+
+[build]
+
+[http_service]
+internal_port = 8090
+force_https = true
+auto_stop_machines = 'stop'
+auto_start_machines = true
+min_machines_running = 0
+processes = ['app']
+[http_service.concurrency]
+type = "requests"
+soft_limit = 500
+hard_limit = 550
+
+[[vm]]
+size = 'shared-cpu-1x'
+
+[mounts]
+destination = "/pb/pb_data"
+source = "pb_data"
